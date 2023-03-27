@@ -37,7 +37,7 @@
 
 	<script>
 	// Generate a random five-letter word
-	const words = ["apple", "banana", "cherry", "grape", "melon", "orange", "peach", "pear", "plum", "lemon"];
+	const words = ["apple", "least", "cheat", "grape", "melon", "raise", "peach", "pearl", "money", "lemon"];
 	const word = words[Math.floor(Math.random() * words.length)];
 
 	// Initialize the number of guesses left
@@ -55,10 +55,11 @@
 	function checkGuess() {
 		// Get the user's guess from the input fields
 		const guess = letter1.value + letter2.value + letter3.value + letter4.value + letter5.value;
-		const guessSpan = document.getElementById("guess");
-
-		// Display the user's guess
+    
+		// Display the guess
+		const guessSpan = document.createElement("span");
 		guessSpan.innerHTML = guess;
+		document.getElementById("result").appendChild(guessSpan);
 
 		// Check each letter of the guess against the word
 		let resultHTML = "";
@@ -79,10 +80,15 @@
 		guessesLeft--;
 		guessesLeftSpan.innerHTML = guessesLeft;
 
-		// If the guess was correct, display a message and disable the input fields and button
-		if (allCorrect) {
-			resultHTML = "<span class='green'>Congratulations, you guessed the word!</span>";
-			letter1.disabled = true;
-			letter2.disabled = true;
-			letter3.disabled = true;
-			
+		// If the guess was correct,
+// Display a message indicating that the guess was correct
+resultHTML = "<span class='green'>Congratulations, you guessed the word!</span>";
+document.getElementById("result").innerHTML = resultHTML;
+
+// Disable the input fields and button
+letter1.disabled = true;
+letter2.disabled = true;
+letter3.disabled = true;
+letter4.disabled = true;
+letter5.disabled = true;
+document.getElementById("guess-button").disabled = true;
