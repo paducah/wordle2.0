@@ -34,7 +34,6 @@
 	<input type="text" id="letter5" maxlength="1">
 	<button onclick="checkGuess()">Guess</button>
 	<p id="result"></p>
-	<p>Your guess: <span id="guess"></span></p>
 
 	<script>
 	// Generate a random five-letter word
@@ -56,9 +55,10 @@
 	function checkGuess() {
 		// Get the user's guess from the input fields
 		const guess = letter1.value + letter2.value + letter3.value + letter4.value + letter5.value;
-		
+		const guessSpan = document.getElementById("guess");
+
 		// Display the user's guess
-		document.getElementById("guess").textContent = guess;
+		guessSpan.innerHTML = guess;
 
 		// Check each letter of the guess against the word
 		let resultHTML = "";
@@ -84,4 +84,5 @@
 			resultHTML = "<span class='green'>Congratulations, you guessed the word!</span>";
 			letter1.disabled = true;
 			letter2.disabled = true;
-			letter
+			letter3.disabled = true;
+			
