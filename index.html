@@ -27,15 +27,14 @@
 	<div id="word"></div>
 	<p>You have <span id="guesses-left">6</span> guesses left</p>
 	<br>
-	<form onsubmit="checkGuess(); return false;">
-		<input type="text" id="letter1" maxlength="1">
-		<input type="text" id="letter2" maxlength="1">
-		<input type="text" id="letter3" maxlength="1">
-		<input type="text" id="letter4" maxlength="1">
-		<input type="text" id="letter5" maxlength="1">
-		<button type="submit">Guess</button>
-	</form>
+	<input type="text" id="letter1" maxlength="1">
+	<input type="text" id="letter2" maxlength="1">
+	<input type="text" id="letter3" maxlength="1">
+	<input type="text" id="letter4" maxlength="1">
+	<input type="text" id="letter5" maxlength="1">
+	<button onclick="checkGuess()">Guess</button>
 	<p id="result"></p>
+	<p>Your guess: <span id="guess"></span></p>
 
 	<script>
 	// Generate a random five-letter word
@@ -53,10 +52,13 @@
 	const letter4 = document.getElementById("letter4");
 	const letter5 = document.getElementById("letter5");
 
-	// Check the user's guess
+	// Check the user's guess when the button is clicked
 	function checkGuess() {
 		// Get the user's guess from the input fields
 		const guess = letter1.value + letter2.value + letter3.value + letter4.value + letter5.value;
+		
+		// Display the user's guess
+		document.getElementById("guess").textContent = guess;
 
 		// Check each letter of the guess against the word
 		let resultHTML = "";
@@ -80,4 +82,6 @@
 		// If the guess was correct, display a message and disable the input fields and button
 		if (allCorrect) {
 			resultHTML = "<span class='green'>Congratulations, you guessed the word!</span>";
-		
+			letter1.disabled = true;
+			letter2.disabled = true;
+			letter
