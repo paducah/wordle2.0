@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Five-Letter Word Game</title>
+	<style>
+		input {
+			width: 30px;
+			font-size: 24px;
+			text-align: center;
+			margin-right: 5px;
+		}
+		.green {
+			color: green;
+		}
+		.yellow {
+			color: yellow;
+		}
+		.red {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<h1>Five-Letter Word Game</h1>
+	<p>Guess the five-letter word:</p>
+	<div id="word"></div>
+	<p>You have <span id="guesses-left">6</span> guesses left</p>
+	<br>
+	<input type="text" id="letter1" maxlength="1">
+	<input type="text" id="letter2" maxlength="1">
+	<input type="text" id="letter3" maxlength="1">
+	<input type="text" id="letter4" maxlength="1">
+	<input type="text" id="letter5" maxlength="1">
+	<button onclick="checkGuess()">Guess</button>
+	<p id="result"></p>
+
+	<script>
+	// Generate a random five-letter word
+	const words = ["apple", "banana", "cherry", "grape", "melon", "orange", "peach", "pear", "plum", "lemon"];
+	const word = words[Math.floor(Math.random() * words.length)];
+
+	// Initialize the number of guesses left
+	let guessesLeft = 6;
+	const guessesLeftSpan = document.getElementById("guesses-left");
+
+	// Get the input fields for each letter
+	const letter1 = document.getElementById("letter1");
+	const letter2 = document.getElementById("letter2");
+	const letter3 = document.getElementById("letter3");
+	const letter4 = document.getElementById("letter4");
+	const letter5 = document.getElementById("letter5");
+
+	// Check the user's guess when the button is clicked
+	function checkGuess() {
+		// Get the user's guess from the input fields
+		const guess = letter1.value + letter2.value + letter3.value + letter4.value + letter5.value;
+
+		// Check each letter of the guess against the word
+		let resultHTML = "";
+		let allCorrect = true;
+		for (let i = 0; i < 5; i++) {
+			if (guess[i] === word[i]) {
+				resultHTML += "<span class='green'>" + guess[i] + "</span>";
+			} else if (word.includes(guess[i])) {
+				resultHTML += "<span class='yellow'>" + guess[i] + "</span>";
+				allCorrect = false;
+			} else {
+				resultHTML += "<span class='red'>" + guess[i] + "</span>";
+				allCorrect = false;
+			}
+		}
+
+		// Decrement the number of guesses left and update the display
+		guessesLeft--;
+		guessesLeftSpan.innerHTML = guessesLeft;
+
+		// If the guess was correct, display a message and disable the input fields and button
+		if (allCorrect) {
+			resultHTML = "<span class='green'>Congratulations, you guessed the word!</span>";
+			letter1.disabled = true;
+			letter2.disabled = true;
+			letter3.disabled = true;
+			letter4.disabled = true;
+			letter5.disabled = true;
+			document.getElementById("result").innerHTML = resultHTML;
+			return;
+		}
+
+		// If
