@@ -1,5 +1,5 @@
 // Array of words to choose from
-const words = ['apple', 'banana', 'cherry', 'grape', 'lemon', 'orange', 'peach', 'pear', 'plum', 'water'];
+const words = ['apple', 'least', 'cheat', 'grape', 'lemon', 'angry', 'peach', 'raise', 'pluto', 'water'];
 
 // Choose a random word from the array
 const word = words[Math.floor(Math.random() * words.length)];
