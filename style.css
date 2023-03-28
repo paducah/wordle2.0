@@ -1,0 +1,36 @@
+#container {
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+input {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.letter {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  margin: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.black {
+  background-color: black;
+  color: white;
+}
